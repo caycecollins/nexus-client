@@ -1,0 +1,11 @@
+{
+  "name": "nexus-api",
+  "version": "0.0.1",
+  "description": "Front-end for Nexus Gaming",
+  "main": "app.js",
+  "scripts": {
+  },
+  "private": true,
+  "dependencies": {
+  }
+}
