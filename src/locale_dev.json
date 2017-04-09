@@ -1,0 +1,30 @@
+{
+  "en-us": {
+    "i18n.GLOBAL.close": "Close",
+    "i18n.GLOBAL.cancel": "Cancel",
+    "i18n.GLOBAL.form.firstName": "First Name",
+    "i18n.GLOBAL.form.lastName": "Last Name",
+    "i18n.Main.LanguageSelector.header": "Language Selector",
+    "i18n.Main.Login.header": "Login",
+    "i18n.LanguageSelector.dropdownTitle": "Language:",
+    "i18n.Login.usernameField.title": "E-Mail Address",
+    "i18n.Login.usernameField.placeholderText": "E-Mail Address",
+    "i18n.Login.passwordField.title": "Password",
+    "i18n.Login.passwordField.placeholderText": "Password",
+    "i18n.Login.submitButton": "Login",
+    "i18n.null": "null"
+  },
+  "es-mx": {
+    "i18n.Main.LanguageSelector.header": "Selector de idioma",
+    "i18n.Main.Login.header": "Iniciar sesión",
+    "i18n.LanguageSelector.dropdownTitle": "Idioma:",
+    "i18n.Login.usernameField.title": "Dirección de correo electrónico",
+    "i18n.Login.usernameField.placeholderText": "Dirección de correo electrónico",
+    "i18n.Login.passwordField.title": "Contraseña",
+    "i18n.Login.passwordField.placeholderText": "Contraseña",
+    "i18n.Login.submitButton": "Iniciar sesión",
+    "i18n.null": "null"
+  },
+  "fr-ca": {
+  }
+}
