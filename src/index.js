@@ -2,31 +2,14 @@ import './index.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { Controller } from 'cerebral'
-import { Container } from 'cerebral/react'
-import Devtools from 'cerebral/devtools'
-import config from 'config'
+import { Container as CerebralController } from 'cerebral/react'
 import { injectGlobal } from 'styled-components'
 
+import controller from './controller'
 import HotSwappingIntlProvider from './components/HotSwappingIntlProvider'
-import Main from './components/Main'
-import authorization from './modules/authorization'
-import localization from './modules/localization'
+import App from './components/App'
 
-// Cerebral state contoller setup
-const controller = Controller({
-  devtools: config.cerebral && config.cerebral.debugger
-    ? Devtools({ remoteDebugger: config.cerebral.remote || null }) : null,
-  state: {
-    config,
-  },
-  modules: {
-    authorization,
-    localization,
-  },
-})
-
-// Use Styled Components to inject global styles
+// Using styled-components to inject global styles
 injectGlobal`
   * {
     &:focus { outline: none; }
@@ -39,21 +22,21 @@ injectGlobal`
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
-      <Container controller={controller}>
+      <CerebralController controller={controller}>
         <HotSwappingIntlProvider>
           <Component />
         </HotSwappingIntlProvider>
-      </Container>
+      </CerebralController>
     </AppContainer>,
     document.getElementsByTagName('main')[0]
   )
 }
 
-render(Main)
+render(App)
 
 if (module.hot) {
-  module.hot.accept('./components/Main', () => {
-    const App = require('./components/Main').default // required to force the module to re-render properly
+  module.hot.accept('./components/App', () => {
+    const App = require('./components/App').default // required to force the module to re-render properly
     render(App)
   })
 }
