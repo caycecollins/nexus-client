@@ -9,7 +9,7 @@ Other goals consist of communicating with the community about news, rules, legal
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ```
-git clone git@git.gamingnex.us:inergy/nexus-client.git
+git clone https://git.gamingnex.us/inergy/nexus-client.git
 yarn
 yarn start:full
 ```
