@@ -6,12 +6,14 @@
     "i18n.GLOBAL.form.lastName": "Last Name",
     "i18n.Main.LanguageSelector.header": "Language Selector",
     "i18n.Main.Login.header": "Login",
+    "i18n.Main.Logout.header": "Logout",
     "i18n.LanguageSelector.dropdownTitle": "Language:",
     "i18n.Login.usernameField.title": "E-Mail Address",
     "i18n.Login.usernameField.placeholderText": "E-Mail Address",
     "i18n.Login.passwordField.title": "Password",
     "i18n.Login.passwordField.placeholderText": "Password",
     "i18n.Login.submitButton": "Login",
+    "i18n.Logout.submitButton": "Logout",
     "i18n.null": "null"
   },
   "es-mx": {
