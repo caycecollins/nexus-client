@@ -38,6 +38,7 @@ export default {
     host: local.host || 'localhost',
     port: local.port || 8080,
     compress: local.compress || false,
+    historyApiFallback: true,
   },
   module: {
     rules: [
