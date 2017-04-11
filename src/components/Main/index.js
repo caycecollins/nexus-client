@@ -12,8 +12,6 @@ import {
 import Logout from '../Logout'
 import LanguageSelector from '../LanguageSelector'
 
-
-
 export default connect(
   {
   },

@@ -21,7 +21,7 @@ function routeTo (view) {
         when(state`user.isLoggedIn`), {
           true: [],
           false: [
-            set(state`app.currentView`, 'login'),
+            set(state`app.currentView`, 'main'),
             // showFlash('You must log in to view this page', 'info'),
           ],
         },
