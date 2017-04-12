@@ -1,5 +1,6 @@
 import Fs from 'fs'
 import Path from 'path'
+
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import Webpack from 'webpack'
 import Copy from 'copy-webpack-plugin'
@@ -30,6 +31,7 @@ export default {
   resolve: {
     alias: {
       config: Path.join(__dirname, 'config', process.env.NODE_ENV || 'development'),
+      common: Path.join(__dirname, 'src', 'common'),
     },
     modules: ['node_modules'],
   },
@@ -59,13 +61,6 @@ export default {
             'stage-0',
           ],
         },
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader?sourceMap!sass-loader?sourceMap',
-        }),
       },
     ],
   },

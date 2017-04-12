@@ -1,4 +1,3 @@
-import './index.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
@@ -16,7 +15,11 @@ injectGlobal`
   }
   ::-ms-clear { display: none; }
   ::-ms-reveal { display: none; }
-  body { overflow-y: scroll; }
+  body {
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+  }
 `
 
 const render = Component => {

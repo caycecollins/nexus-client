@@ -28,8 +28,8 @@ function RenderView ({ currentView, lastVisited }) {
   views[currentView]
     ? console.log(`Routing to view: ${currentView}`)
     : console.log(`The route "${currentView}" does not exist, routing to login instead.`)
-  const ViewComponent = views[currentView] || views['main']
+  const Component = views[currentView] || views['main']
   return (
-    <ViewComponent />
+    <Component />
   )
 })

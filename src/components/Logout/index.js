@@ -8,19 +8,13 @@ import {
   FormattedMessage,
 } from 'react-intl'
 
-import {
-  BSButton,
-} from '../../wrappers/bootstrap'
-
 function Logout (props) {
   return (
-    <BSButton
-      type="button"
-      color="danger"
+    <button
       onClick={() => props.viewChanged({ view: 'login' })}
     >
       <FormattedMessage id={'i18n.Logout.submitButton'} />
-    </BSButton>
+    </button>
   )
 }
 

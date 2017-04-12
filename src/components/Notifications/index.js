@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { BSContainer } from '../../wrappers/bootstrap'
-
 function Notifications (props) {
   return (
-    <BSContainer>
+    <div>
       <br />
       Notifications
-    </BSContainer>
+    </div>
   )
 }
 

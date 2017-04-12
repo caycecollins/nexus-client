@@ -6,12 +6,6 @@ import {
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
-import {
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap'
 
 export default connect(
   {
@@ -37,24 +31,20 @@ export default connect(
     render () {
       const languages = ['no-lang', ...this.props.availableLanguages].sort() // add no-lang for a selection choice to display i18n path names
       return (
-        <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle caret>
-            <FormattedMessage id={'i18n.LanguageSelector.dropdownTitle'} />
-            &nbsp;<strong>{this.props.language}</strong>&nbsp;
-          </DropdownToggle>
-          <DropdownMenu>
-            {languages.map(language => {
-              return (
-                <DropdownItem
-                  onClick={event => this.props.changeLanguage({ language: language })}
-                  key={language}
-                >
-                  {language}
-                </DropdownItem>
-              )
-            })}
-          </DropdownMenu>
-        </ButtonDropdown>
+        <div>
+          <FormattedMessage id={'i18n.LanguageSelector.dropdownTitle'} />
+          <br/>
+          {languages.map(language => {
+            return (
+              <button
+                onClick={event => this.props.changeLanguage({ language: language })}
+                key={language}
+              >
+                {language}
+              </button>
+            )
+          })}
+        </div>
       )
     }
   }
