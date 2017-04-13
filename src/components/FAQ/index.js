@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 function FAQ (props) {
   return (
@@ -8,9 +7,6 @@ function FAQ (props) {
       FAQ
     </div>
   )
-}
-
-FAQ.propTypes = {
 }
 
 export default FAQ

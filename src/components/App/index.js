@@ -11,9 +11,9 @@ import RenderView from '../RenderView'
 import toolboxTheme from '../../../dist/react-toolbox/theme'
 import cerebralTheme from '../.././theme'
 
-import AppBar from './AppBar'
-import NavDrawer from './NavDrawer'
-import Sidebar from './Sidebar'
+import AppBar from '../AppBar'
+import NavDrawer from '../NavDrawer'
+import Sidebar from '../Sidebar'
 
 const App = props => {
   return (
