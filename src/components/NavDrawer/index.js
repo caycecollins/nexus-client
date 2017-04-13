@@ -17,6 +17,11 @@ const menuItems = [
 ]
 
 const NavDrawer = props => {
+  const navigationItemClicked = (item) => {
+    const windowWidth = window.outerWidth
+    windowWidth < 576 && props.toggleDrawerPinned({ value: false })
+    props.viewChanged({ view: item.route })
+  }
   return (
     <div>
       <StyledNavDrawer
@@ -33,16 +38,14 @@ const NavDrawer = props => {
           <StyledAvatar />
           User Nickname
         </StyledUser>
-        <StyledNavigation
-          type="vertical"
-        >
+        <StyledNavigation type="vertical">
           <RTList>
             {menuItems.map((item, index) => {
               return (
                 <StyledListItem
                   caption={item.label}
                   key={item.route}
-                  onClick={() => props.viewChanged({ view: item.route })}
+                  onClick={() => navigationItemClicked(item)}
                   disabled={item.route === props.currentView}
                   ripple={false} // TODO: fix styles so ripple will work
                   selectable
@@ -60,10 +63,9 @@ NavDrawer.propTypes = {
   currentView: PropTypes.string,
   viewChanged: PropTypes.func,
   drawerActive: PropTypes.bool,
-  drawerPinned: PropTypes.bool,
   toggleDrawerActive: PropTypes.func,
+  drawerPinned: PropTypes.bool,
   toggleDrawerPinned: PropTypes.func,
-  toggleSidebarPinned: PropTypes.func,
 }
 
 export default connect(
@@ -71,6 +73,7 @@ export default connect(
     currentView: state`app.currentView`,
     viewChanged: signal`app.viewChanged`,
     drawerActive: state`app.drawerActive`,
+    toggleDrawerActive: signal`app.drawerActiveToggled`,
     drawerPinned: state`app.drawerPinned`,
     toggleDrawerPinned: signal`app.drawerPinnedToggled`,
   },

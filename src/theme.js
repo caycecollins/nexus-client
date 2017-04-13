@@ -1,6 +1,6 @@
 const primaryTheme = {
   colors: {
-    blue: '#1f608d',
+    blue: '#1f5f8b',
     lightBlue: '#44799e',
     gray: '#353a45',
     lightGray: '#616161',

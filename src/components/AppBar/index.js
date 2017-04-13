@@ -11,11 +11,19 @@ import RTMenuDivider from 'react-toolbox/lib/menu/MenuDivider'
 
 const AppBar = (props) => {
   const languages = ['none (show i18n paths)', ...props.availableLanguages].sort()
+  const navigationItemClicked = () => {
+    const windowWidth = window.outerWidth
+    console.log(windowWidth)
+    windowWidth < 576
+      ? props.drawerActiveToggled({ value: !props.drawerActive })
+      : props.drawerPinnedToggled({ value: !props.drawerPinned })
+  }
   return (
     <StyledAppBar
       title="Nexus Gaming"
       leftIcon={!props.drawerPinned ? 'menu' : null}
-      onLeftIconClick={() => props.drawerPinnedToggled({ value: !props.drawerActive })}
+      onLeftIconClick={() => navigationItemClicked()}
+      flat
     >
       <StyledRightIcons>
         <StyledIconMenu icon="language" menuRipple>
