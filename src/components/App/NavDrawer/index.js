@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { state, signal } from 'cerebral/tags'
@@ -6,13 +6,16 @@ import styled from 'styled-components'
 import IconButton from 'react-toolbox/lib/button/IconButton'
 import RTNavDrawer from 'react-toolbox/lib/layout/NavDrawer'
 import RTPanel from 'react-toolbox/lib/layout/Panel'
+import RTNavigation from 'react-toolbox/lib/navigation/Navigation'
+import RTList from 'react-toolbox/lib/list/List'
+import RTListItem from 'react-toolbox/lib/list/ListItem'
 
-// const menuItems = [
-//   { label: 'Home', route: 'main' },
-//   { label: 'Tournaments', route: 'tournaments' },
-//   { label: 'Teams', route: 'teams' },
-//   { label: 'FAQ', route: 'faq' },
-// ]
+const menuItems = [
+  { label: 'Home', route: 'home' },
+  { label: 'Tournaments', route: 'tournaments' },
+  { label: 'Teams', route: 'teams' },
+  { label: 'FAQ', route: 'faq' },
+]
 
 const NavDrawer = props => {
   return (
@@ -24,7 +27,7 @@ const NavDrawer = props => {
         onOverlayClick={() => props.toggleDrawerPinned({ value: false })}
       >
         <RTPanel>
-            <StyledIconButton
+          <StyledIconButton
             icon="close"
             onClick={() => props.toggleDrawerPinned({ value: false })}
           />
@@ -32,19 +35,24 @@ const NavDrawer = props => {
             <Avatar />
             User Nickname
           </User>
-          {/* <BSListGroup>
-            {menuItems.map((item, index) => {
-              return (
-                <ListGroupItem
-                  key={index}
-                  active={props.currentView === item.route}
-                  onClick={() => props.viewChanged({ view: item.route })}
-                >
-                  {item.label}
-                </ListGroupItem>
-              )
-            })}
-          </BSListGroup> */}
+          <Navigation
+            type="vertical"
+          >
+            <RTList>
+              {menuItems.map((item, index) => {
+                return (
+                  <ListItem
+                    caption={item.label}
+                    key={item.route}
+                    onClick={() => props.viewChanged({ view: item.route })}
+                    selectable
+                    disabled={item.route === props.currentView}
+                    ripple={false} // TODO: fix styles so ripple will work
+                  />
+                )
+              })}
+            </RTList>
+          </Navigation>
         </RTPanel>
       </StyledNavDrawer>
     </div>
@@ -73,7 +81,7 @@ export default connect(
 )
 
 const StyledNavDrawer = styled(RTNavDrawer)`
-  background-color: #353a45;
+  background-color: ${props => props.theme.colors.gray};
   transition-delay: 0ms !important;
   ${props => props.pinned && 'border-right: 0 !important;'}
 `
@@ -102,18 +110,29 @@ const Avatar = styled.div`
   border-radius: 50%;
 `
 
-// const ListGroupItem = styled(BSListGroupItem)`
-//   border-radius: 0px !important;
-//   border: 0;
-//   border-left: 4px solid transparent;
-//   background-color: transparent;
-//   color: white;
-//   &.active {
-//     background-color: #1f5f8b;
-//     border-left: 4px solid #44799e;
-//   }
-//   &:hover:not(.active) {
-//     background-color: #454b59;
-//     cursor: pointer;
-//   }
-// `
+const Navigation = styled(RTNavigation)`
+  padding: 0;
+`
+
+const ListItem = styled(RTListItem)`
+  [data-react-toolbox="list-item-text"] {
+    color: white !important;
+  }
+  > span {
+    border-left: 5px solid transparent;
+    transition: all .1s ease-in-out;
+    &:hover {
+      background-color: ${props => props.theme.colors.lightGray} !important;
+    }
+  }
+  ${props => props.disabled && `
+    > span {
+      border-left: 5px solid ${props.theme.colors.lightBlue};
+      opacity: 1 !important;
+      background-color: ${props.theme.colors.blue};
+      &:hover {
+        cursor: default;
+      }
+    }
+  `}
+`

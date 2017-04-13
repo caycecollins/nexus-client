@@ -3,7 +3,7 @@ import { connect } from 'cerebral/react'
 import { state } from 'cerebral/tags'
 
 import Login from '../Login'
-import Main from '../Main'
+import Home from '../Home'
 import Tournaments from '../Tournaments'
 import Teams from '../Teams'
 import FAQ from '../FAQ'
@@ -11,7 +11,7 @@ import Notifications from '../Notifications'
 import Settings from '../Settings'
 
 const views = {
-  main: Main,
+  home: Home,
   login: Login,
   tournaments: Tournaments,
   teams: Teams,
@@ -28,7 +28,7 @@ function RenderView ({ currentView, lastVisited }) {
   views[currentView]
     ? console.log(`Routing to view: ${currentView}`)
     : console.log(`The route "${currentView}" does not exist, routing to login instead.`)
-  const Component = views[currentView] || views['main']
+  const Component = views[currentView] || views['home']
   return (
     <Component />
   )
