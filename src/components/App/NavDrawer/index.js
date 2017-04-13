@@ -26,34 +26,32 @@ const NavDrawer = props => {
         permanentAt="sm"
         onOverlayClick={() => props.toggleDrawerPinned({ value: false })}
       >
-        <RTPanel>
-          <StyledIconButton
-            icon="close"
-            onClick={() => props.toggleDrawerPinned({ value: false })}
-          />
-          <User>
-            <Avatar />
-            User Nickname
-          </User>
-          <Navigation
-            type="vertical"
-          >
-            <RTList>
-              {menuItems.map((item, index) => {
-                return (
-                  <ListItem
-                    caption={item.label}
-                    key={item.route}
-                    onClick={() => props.viewChanged({ view: item.route })}
-                    selectable
-                    disabled={item.route === props.currentView}
-                    ripple={false} // TODO: fix styles so ripple will work
-                  />
-                )
-              })}
-            </RTList>
-          </Navigation>
-        </RTPanel>
+        <StyledIconButton
+          icon="close"
+          onClick={() => props.toggleDrawerPinned({ value: false })}
+        />
+        <StyledUser>
+          <StyledAvatar />
+          User Nickname
+        </StyledUser>
+        <StyledNavigation
+          type="vertical"
+        >
+          <RTList>
+            {menuItems.map((item, index) => {
+              return (
+                <StyledListItem
+                  caption={item.label}
+                  key={item.route}
+                  onClick={() => props.viewChanged({ view: item.route })}
+                  disabled={item.route === props.currentView}
+                  ripple={false} // TODO: fix styles so ripple will work
+                  selectable
+                />
+              )
+            })}
+          </RTList>
+        </StyledNavigation>
       </StyledNavDrawer>
     </div>
   )
@@ -90,7 +88,7 @@ const StyledIconButton = styled(IconButton)`
   color: white !important;
 `
 
-const User = styled.div`
+const StyledUser = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +100,7 @@ const User = styled.div`
   color: white;
 `
 
-const Avatar = styled.div`
+const StyledAvatar = styled.div`
   margin: 0 auto 10px auto;
   width: 90px;
   height: 90px;
@@ -110,11 +108,11 @@ const Avatar = styled.div`
   border-radius: 50%;
 `
 
-const Navigation = styled(RTNavigation)`
+const StyledNavigation = styled(RTNavigation)`
   padding: 0;
 `
 
-const ListItem = styled(RTListItem)`
+const StyledListItem = styled(RTListItem)`
   [data-react-toolbox="list-item-text"] {
     color: white !important;
   }

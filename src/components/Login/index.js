@@ -8,47 +8,43 @@ import {
 import {
   injectIntl,
   intlShape,
-  FormattedMessage,
 } from 'react-intl'
+import RTInput from 'react-toolbox/lib/input/Input'
+import RTButton from 'react-toolbox/lib/button/Button'
+import RTCard from 'react-toolbox/lib/card/Card'
+import RTCardTitle from 'react-toolbox/lib/card/CardTitle'
+import RTCardText from 'react-toolbox/lib/card/CardText'
+import RTCardActions from 'react-toolbox/lib/card/CardActions'
 
 function Login (props) {
   return (
     <div>
-      <div>
-        <FormattedMessage id={'i18n.Main.Login.header'} />
-      </div>
-      <div>
-        <div>
-          <div />
-          <div>
-            <div>
-              <input
-                // autoFocus // (TODO) removed due to some wonkyness with dropdown causing focus/blur on this element
-                type="text"
-                placeholder={props.intl.formatMessage({ id: 'i18n.Login.usernameField.placeholderText' })}
-                value={props.username}
-                onChange={e => props.usernameChanged({ username: e.target.value })}
-              />
-            </div>
-          </div>
-          <div>
-            <div>
-              <input
-                type="password"
-                placeholder={props.intl.formatMessage({ id: 'i18n.Login.passwordField.placeholderText' })}
-                value={props.password}
-                onChange={e => props.passwordChanged({ password: e.target.value })}
-              />
-            </div>
-          </div>
-          <button
-            type="button"
+      <RTCard>
+        <RTCardTitle title={props.intl.formatMessage({ id: 'i18n.Main.Login.header' })} />
+        <RTCardText>
+          <br />
+          <RTInput
+            // autoFocus // (TODO) removed due to some wonkyness with dropdown causing focus/blur on this element
+            type="text"
+            label={props.intl.formatMessage({ id: 'i18n.Login.usernameField.placeholderText' })}
+            value={props.username}
+            onChange={e => props.usernameChanged({ username: e.target.value })}
+          />
+          <RTInput
+            type="password"
+            label={props.intl.formatMessage({ id: 'i18n.Login.passwordField.placeholderText' })}
+            value={props.password}
+            onChange={e => props.passwordChanged({ password: e.target.value })}
+          />
+          <br />
+        </RTCardText>
+        <RTCardActions>
+          <RTButton
+            label={props.intl.formatMessage({ id: 'i18n.Login.submitButton' })}
             onClick={() => props.viewChanged({ view: 'main' })} // until auth is in
-          >
-            <FormattedMessage id={'i18n.Login.submitButton'} />
-          </button>
-        </div>
-      </div>
+          />
+        </RTCardActions>
+      </RTCard>
     </div>
   )
 }

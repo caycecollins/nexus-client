@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { state, signal } from 'cerebral/tags'
-import styled from 'styled-components'
 import RTCheckbox from 'react-toolbox/lib/checkbox/Checkbox'
 
 import Logout from '../Logout'
@@ -25,6 +24,7 @@ const Settings = props => {
         checked={props.sidebarActive}
         onChange={value => props.sidebarActiveToggled({ value: value })}
       />
+      <br />
       <Logout />
     </div>
   )
