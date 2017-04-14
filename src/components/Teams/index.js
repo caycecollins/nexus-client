@@ -17,7 +17,8 @@ export default Teams
 
 const Container = styled.div`
   width: 100%;
-  height: 200%;
+  height: 100%;
   padding: 24px;
-  background-color: #bbb;
+  background-color: #aba;
+  color: white;
 `

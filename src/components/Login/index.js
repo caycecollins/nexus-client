@@ -9,6 +9,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl'
+import styled from 'styled-components'
 import RTInput from 'react-toolbox/lib/input/Input'
 import RTButton from 'react-toolbox/lib/button/Button'
 import RTCard from 'react-toolbox/lib/card/Card'
@@ -18,7 +19,7 @@ import RTCardActions from 'react-toolbox/lib/card/CardActions'
 
 function Login (props) {
   return (
-    <div>
+    <Container>
       <RTCard>
         <RTCardTitle title={props.intl.formatMessage({ id: 'i18n.Main.Login.header' })} />
         <RTCardText>
@@ -45,7 +46,7 @@ function Login (props) {
           />
         </RTCardActions>
       </RTCard>
-    </div>
+    </Container>
   )
 }
 
@@ -70,3 +71,10 @@ export default connect(
   },
   injectIntl(Login)
 )
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background-color: #ddd;
+`

@@ -14,7 +14,7 @@ function Logout (props) {
     <Button
       icon="exit_to_app"
       raised={true}
-
+      primary
       onClick={() => props.viewChanged({ view: 'login' })}
     >
       <FormattedMessage id={'i18n.Logout.submitButton'} />

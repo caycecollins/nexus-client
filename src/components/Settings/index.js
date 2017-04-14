@@ -2,31 +2,41 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { state, signal } from 'cerebral/tags'
+import styled from 'styled-components'
 import RTCheckbox from 'react-toolbox/lib/checkbox/Checkbox'
+import RTCard from 'react-toolbox/lib/card/Card'
+import RTCardTitle from 'react-toolbox/lib/card/CardTitle'
+import RTCardText from 'react-toolbox/lib/card/CardText'
 
 import Logout from '../Logout'
 
 const Settings = props => {
   return (
-    <div>
-      <RTCheckbox
-        label="Show drawer"
-        checked={props.drawerActive}
-        onChange={value => props.drawerActiveToggled({ value: value })}
-      />
-      <RTCheckbox
-        label="Pin drawer"
-        checked={props.drawerPinned}
-        onChange={value => props.drawerPinnedToggled({ value: value })}
-      />
-      <RTCheckbox
-        label="Show sidebar"
-        checked={props.sidebarActive}
-        onChange={value => props.sidebarActiveToggled({ value: value })}
-      />
-      <br />
-      <Logout />
-    </div>
+    <Container>
+      <RTCard>
+        <RTCardTitle title="Settings" />
+        <RTCardText>
+          <br />
+          <RTCheckbox
+            label="Show drawer"
+            checked={props.drawerActive}
+            onChange={value => props.drawerActiveToggled({ value: value })}
+          />
+          <RTCheckbox
+            label="Pin drawer"
+            checked={props.drawerPinned}
+            onChange={value => props.drawerPinnedToggled({ value: value })}
+          />
+          <RTCheckbox
+            label="Show sidebar"
+            checked={props.sidebarActive}
+            onChange={value => props.sidebarActiveToggled({ value: value })}
+          />
+          <br />
+          <Logout />
+        </RTCardText>
+      </RTCard>
+    </Container>
   )
 }
 
@@ -49,3 +59,10 @@ export default connect(
     sidebarActiveToggled: signal`app.sidebarActiveToggled`,
   }, Settings
 )
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background-color: #bbb;
+`
