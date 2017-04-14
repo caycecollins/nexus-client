@@ -53,11 +53,11 @@ const FullWidthHeight = styled.div`
   position: absolute;
   ${props => {
     const transitionDelay = props.drawerPinned ? 'transition-delay: 50ms !important;' : 'transition-delay: 0ms !important;'
-    const height = document.documentElement.clientHeight
+    const width = document.documentElement.clientWidth
     const subtractWidth = props.drawerPinned ? '256px' : '0px'
-    const subtractHeight = height <= 480 && '56px' ||
-      height > 480 && height < 600 && '48px' ||
-      height > 600 && '64px'
+    const subtractHeight = width <= 480 && '56px' ||
+      width > 480 && width < 600 && '48px' ||
+      width > 600 && '64px'
     return `
       width: calc(100% - ${subtractWidth});
       height: calc(100% - ${subtractHeight});
