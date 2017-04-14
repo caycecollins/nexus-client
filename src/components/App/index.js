@@ -10,7 +10,6 @@ import RTPanel from 'react-toolbox/lib/layout/Panel'
 import RenderView from '../RenderView'
 import toolboxTheme from '../../../dist/react-toolbox/theme'
 import cerebralTheme from '../.././theme'
-
 import AppBar from '../AppBar'
 import NavDrawer from '../NavDrawer'
 import Sidebar from '../Sidebar'
@@ -24,9 +23,7 @@ const App = props => {
           <RTPanel>
             <View isDrawerPinned={props.drawerPinned}>
               <AppBar />
-              <Padding>
-                <RenderView />
-              </Padding>
+              <RenderView />
             </View>
           </RTPanel>
           <Sidebar/>
@@ -54,8 +51,4 @@ const View = styled.div`
   @media (max-width: 575px) {
     margin-left: 0;
   }
-`
-
-const Padding = styled.div`
-  padding: 24px;
 `

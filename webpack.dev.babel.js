@@ -62,6 +62,13 @@ export default {
           ],
         },
       },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?sourceMap!sass-loader?sourceMap',
+        }),
+      },
     ],
   },
   plugins: [

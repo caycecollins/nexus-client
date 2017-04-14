@@ -48,8 +48,8 @@
     "build:webpack": "webpack --config webpack.prod.babel.js --progress",
     "clean": "rimraf dist",
     "start": "webpack-dev-server --config webpack.dev.babel.js --hot --inline --progress",
-    "start:full": "npm run clean && npm run build:dll && npm run build:i18n && webpack-dev-server --config webpack.dev.babel.js --hot --inline --progress",
-    "start:optimized": "npm run clean && npm run build:dll && npm run build:i18n && webpack-dev-server --config webpack.dev.babel.js --hot --inline --optimize-minimize --progress",
+    "start:full": "npm run clean && npm run build:dll && npm run build:i18n && npm run toolbox && webpack-dev-server --config webpack.dev.babel.js --hot --inline --progress",
+    "start:optimized": "npm run clean && npm run build:dll && npm run build:i18n && npm run toolbox && webpack-dev-server --config webpack.dev.babel.js --hot --inline --optimize-minimize --progress",
     "test": "jest",
     "toolbox": "react-toolbox-themr"
   },
@@ -133,6 +133,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "react-toolbox": "2.0.0-beta.6",
     "react-toolbox-themr": "^1.0.2",
+    "react-transition-group": "^1.1.1",
     "reactstrap": "^4.2.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^6.0.3",
