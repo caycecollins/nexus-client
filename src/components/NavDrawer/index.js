@@ -10,10 +10,10 @@ import RTList from 'react-toolbox/lib/list/List'
 import RTListItem from 'react-toolbox/lib/list/ListItem'
 
 const menuItems = [
-  { label: 'Home', route: 'home' },
-  { label: 'Tournaments', route: 'tournaments' },
-  { label: 'Teams', route: 'teams' },
-  { label: 'FAQ', route: 'faq' },
+  { label: 'Home', route: 'home', icon: 'home' },
+  { label: 'Tournaments', route: 'tournaments', icon: 'stars' },
+  { label: 'Teams', route: 'teams', icon: 'group' },
+  { label: 'FAQ', route: 'faq', icon: 'help' },
 ]
 
 const NavDrawer = props => {
@@ -45,6 +45,7 @@ const NavDrawer = props => {
                 <StyledListItem
                   caption={item.label}
                   key={item.route}
+                  leftIcon={item.icon}
                   onClick={() => navigationItemClicked(item)}
                   disabled={item.route === props.currentView}
                   ripple={false} // TODO: fix styles so ripple will work
@@ -100,6 +101,7 @@ const StyledUser = styled.div`
   width: 100%;
   padding: 24px;
   color: white;
+  margin-bottom: 16px;
 `
 
 const StyledAvatar = styled.div`
@@ -115,6 +117,7 @@ const StyledNavigation = styled(RTNavigation)`
 `
 
 const StyledListItem = styled(RTListItem)`
+  [data-react-toolbox="font-icon"],
   [data-react-toolbox="list-item-text"] {
     color: white !important;
   }
