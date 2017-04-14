@@ -16,7 +16,7 @@ injectGlobal`
   ::-ms-clear { display: none; }
   ::-ms-reveal { display: none; }
   body {
-    overflow-y: scroll;
+    overflow: hidden;
     margin: 0;
     padding: 0;
   }

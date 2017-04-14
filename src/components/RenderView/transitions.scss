@@ -1,14 +1,14 @@
-.test-enter {
+.view-enter {
   opacity: 0.01;
-  &.test-enter-active {
+  &.view-enter-active {
     opacity: 1;
     transition: opacity 500ms ease-in;
   }
 }
 
-.test-leave {
+.view-leave {
   opacity: 1;
-  &.test-leave-active {
+  &.view-leave-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
   }

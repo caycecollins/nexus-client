@@ -27,8 +27,9 @@ const views = {
 export default connect({
   currentView: state`app.currentView`,
   lastVisited: state`app.lastVisited`,
+  drawerPinned: state`app.drawerPinned`,
 },
-function RenderView ({ currentView, lastVisited }) {
+function RenderView ({ currentView, lastVisited, drawerPinned }) {
   views[currentView]
     ? console.log(`Routing to view: ${currentView}`)
     : console.log(`The route "${currentView}" does not exist, routing to login instead.`)
@@ -36,12 +37,12 @@ function RenderView ({ currentView, lastVisited }) {
   return (
     <div>
       <CSSTransitionGroup
-        transitionName="test"
+        transitionName="view"
         transitionEnterTimeout={500}
         transitionLeaveTimeout={300}
       >
-        <FullWidthHeight key={currentView}>
-          <Component/>
+        <FullWidthHeight key={currentView} drawerPinned={drawerPinned}>
+          <Component />
         </FullWidthHeight>
       </CSSTransitionGroup>
     </div>
@@ -50,7 +51,19 @@ function RenderView ({ currentView, lastVisited }) {
 
 const FullWidthHeight = styled.div`
   position: absolute;
-  height: calc(100vh - 64px);
-  width: calc(100% - 256px);
-  padding: 24px;
+  ${props => {
+    const transitionDelay = props.drawerPinned ? 'transition-delay: 50ms !important;' : 'transition-delay: 0ms !important;'
+    const height = document.documentElement.clientHeight
+    const subtractWidth = props.drawerPinned ? '256px' : '0px'
+    const subtractHeight = height <= 480 && '56px' ||
+      height > 480 && height < 600 && '48px' ||
+      height > 600 && '64px'
+    return `
+      width: calc(100% - ${subtractWidth});
+      height: calc(100% - ${subtractHeight});
+      ${transitionDelay}
+    `
+  }})
+  overflow: auto;
+  transition: all .3s cubic-bezier(.4,0,.2,1);
 `
