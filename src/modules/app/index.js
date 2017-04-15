@@ -3,6 +3,7 @@ import drawerActiveToggled from './signals/drawerActiveToggled'
 import drawerPinnedToggled from './signals/drawerPinnedToggled'
 import drawerMinimalToggled from './signals/drawerMinimalToggled'
 import sidebarActiveToggled from './signals/sidebarActiveToggled'
+import sidebarViewChanged from './signals/sidebarViewChanged'
 
 function getInitialDrawerPinned () {
   if (window.innerWidth < 840) {
@@ -19,6 +20,7 @@ export default {
     drawerActive: null,
     drawerPinned: getInitialDrawerPinned(),
     sidebarActive: null,
+    sidebarView: null,
     drawerMinimal: null,
   },
   signals: {
@@ -27,5 +29,6 @@ export default {
     drawerPinnedToggled,
     drawerMinimalToggled,
     sidebarActiveToggled,
+    sidebarViewChanged,
   },
 }

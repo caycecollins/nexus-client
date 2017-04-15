@@ -29,10 +29,10 @@ const AppBar = (props) => {
           <RTMenuItem caption="Language Selection" disabled />
           <RTMenuDivider />
           {languages.map((language, index) =>
-            <StyledMenuItem key={index} caption={language} disabled={language === props.language} onClick={() => props.changeLanguage({ language: language })} />
+            <StyledMenuItem key={index} caption={language} disabled={language === props.language} onClick={() => props.languageChanged({ language: language })} />
           )}
         </StyledIconMenu>
-        <StyledIconButton icon="notifications" onClick={() => props.viewChanged({ view: 'notifications' })} />
+        <StyledIconButton icon="notifications" onClick={() => props.sidebarViewChanged({ view: 'notifications' })} />
         <StyledIconButton icon="settings" onClick={() => props.viewChanged({ view: 'settings' })} />
       </StyledRightIcons>
     </StyledAppBar>
@@ -40,14 +40,16 @@ const AppBar = (props) => {
 }
 
 AppBar.propTypes = {
+  viewChanged: PropTypes.func,
   drawerActive: PropTypes.bool,
   drawerActiveToggled: PropTypes.func,
   drawerPinned: PropTypes.bool,
   drawerPinnedToggled: PropTypes.func,
-  viewChanged: PropTypes.func,
+  sidebarActiveToggled: PropTypes.func,
+  sidebarViewChanged: PropTypes.func,
   language: PropTypes.string.isRequired,
   availableLanguages: PropTypes.array.isRequired,
-  changeLanguage: PropTypes.func.isRequired,
+  languageChanged: PropTypes.func.isRequired,
 }
 
 export default connect(
@@ -56,10 +58,13 @@ export default connect(
     drawerActiveToggled: signal`app.drawerActiveToggled`,
     drawerPinned: state`app.drawerPinned`,
     drawerPinnedToggled: signal`app.drawerPinnedToggled`,
+    sidebarActive: state`app.sidebarActive`,
+    sidebarActiveToggled: signal`app.sidebarActiveToggled`,
+    sidebarViewChanged: signal`app.sidebarViewChanged`,
     viewChanged: signal`app.viewChanged`,
     language: state`localization.language`,
     availableLanguages: state`localization.availableLanguages`,
-    changeLanguage: signal`localization.languageChanged`,
+    languageChanged: signal`localization.languageChanged`,
   }, AppBar
 )
 
