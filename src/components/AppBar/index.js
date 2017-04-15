@@ -10,7 +10,7 @@ import RTMenuItem from 'react-toolbox/lib/menu/MenuItem'
 import RTMenuDivider from 'react-toolbox/lib/menu/MenuDivider'
 
 const AppBar = (props) => {
-  const languages = ['none (show i18n paths)', ...props.availableLanguages].sort()
+  const languages = ['none', ...props.availableLanguages].sort()
   const navigationItemClicked = () => {
     const windowWidth = window.innerWidth
     windowWidth <= 840
@@ -28,9 +28,21 @@ const AppBar = (props) => {
         <StyledIconMenu icon="language" menuRipple>
           <RTMenuItem caption="Language Selection" disabled />
           <RTMenuDivider />
-          {languages.map((language, index) =>
-            <StyledMenuItem key={index} caption={language} disabled={language === props.language} onClick={() => props.languageChanged({ language: language })} />
-          )}
+          {languages.map((language, index) => {
+            const lang = {}
+            if (language === 'en-us') { lang.name = 'English' }
+            if (language === 'es-mx') { lang.name = 'Spanish' }
+            if (language === 'none') { lang.name = 'No Language' }
+            const languageCaption = `${lang.name} (${language})`
+            return (
+              <StyledMenuItem
+                key={index}
+                caption={languageCaption}
+                disabled={language === props.language}
+                onClick={() => props.languageChanged({ language: language })}
+              />
+            )
+          })}
         </StyledIconMenu>
         <StyledIconButton icon="notifications" onClick={() => props.sidebarViewChanged({ view: 'notifications' })} />
         <StyledIconButton icon="settings" onClick={() => props.viewChanged({ view: 'settings' })} />
