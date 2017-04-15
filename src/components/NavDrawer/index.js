@@ -89,7 +89,7 @@ export default connect(
 const StyledNavDrawer = styled(RTNavDrawer)`
   background-color: ${props => props.theme.colors.gray};
   transition-delay: 0ms !important;
-  ${props => props.pinned && 'border-right: 0 !important;'}
+  border-right: 0 !important;
 `
 
 const StyledIconButton = styled(IconButton)`
