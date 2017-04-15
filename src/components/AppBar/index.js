@@ -12,8 +12,8 @@ import RTMenuDivider from 'react-toolbox/lib/menu/MenuDivider'
 const AppBar = (props) => {
   const languages = ['none (show i18n paths)', ...props.availableLanguages].sort()
   const navigationItemClicked = () => {
-    const windowWidth = window.outerWidth
-    windowWidth < 576
+    const windowWidth = window.innerWidth
+    windowWidth <= 840
       ? props.drawerActiveToggled({ value: !props.drawerActive })
       : props.drawerPinnedToggled({ value: !props.drawerPinned })
   }

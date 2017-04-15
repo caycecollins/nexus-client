@@ -17,9 +17,12 @@ const menuItems = [
 ]
 
 const NavDrawer = props => {
+  const closeButtonClicked = () => {
+    props.toggleDrawerActive({ value: false })
+    props.toggleDrawerPinned({ value: false })
+  }
   const navigationItemClicked = (item) => {
-    const windowWidth = window.outerWidth
-    windowWidth < 576 && props.toggleDrawerPinned({ value: false })
+    props.toggleDrawerActive({ value: false })
     props.viewChanged({ view: item.route })
   }
   return (
@@ -28,11 +31,11 @@ const NavDrawer = props => {
         active={props.drawerActive}
         pinned={props.drawerPinned}
         permanentAt="sm"
-        onOverlayClick={() => props.toggleDrawerPinned({ value: false })}
+        onOverlayClick={() => props.toggleDrawerActive({ value: false })}
       >
         <StyledIconButton
           icon="close"
-          onClick={() => props.toggleDrawerPinned({ value: false })}
+          onClick={() => closeButtonClicked()}
         />
         <StyledUser>
           <StyledAvatar />
@@ -67,6 +70,7 @@ NavDrawer.propTypes = {
   toggleDrawerActive: PropTypes.func,
   drawerPinned: PropTypes.bool,
   toggleDrawerPinned: PropTypes.func,
+  drawerMinimal: PropTypes.bool,
 }
 
 export default connect(
@@ -77,6 +81,7 @@ export default connect(
     toggleDrawerActive: signal`app.drawerActiveToggled`,
     drawerPinned: state`app.drawerPinned`,
     toggleDrawerPinned: signal`app.drawerPinnedToggled`,
+    drawerMinimal: state`app.drawerMinimal`,
   },
   NavDrawer
 )
