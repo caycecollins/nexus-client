@@ -35,7 +35,19 @@ const render = Component => {
   )
 }
 
-render(App)
+// If browser doesn't support Intl (i.e. Safari), then we manually import the intl polyfill and locale data.
+if (!window.intl && !window.Intl) {
+  require.ensure([
+    'intl',
+    'intl/locale-data/jsonp/en.js',
+  ], () => {
+    require('intl')
+    require('intl/locale-data/jsonp/en.js')
+    render(App)
+  }, 'Intl')
+} else {
+  render(App)
+}
 
 if (module.hot) {
   module.hot.accept('./components/App', () => {
