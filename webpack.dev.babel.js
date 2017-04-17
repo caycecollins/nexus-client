@@ -13,9 +13,9 @@ if (Fs.existsSync('./webpack.local.js')) {
 }
 
 export default {
+  devtool: 'cheap-module-eval-source-map',
   context: Path.resolve(__dirname, 'src'),
   watch: true,
-  devtool: 'eval-source-map',
   entry: {
     index: [
       'babel-polyfill',

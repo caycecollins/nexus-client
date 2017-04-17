@@ -3,6 +3,7 @@ import Path from 'path'
 import Webpack from 'webpack'
 
 module.exports = {
+  devtool: 'cheap-module-eval-source-map',
   entry: {
     vendor: ['babel-polyfill', Path.join(__dirname, 'src', 'vendors.js')],
   },
