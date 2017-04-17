@@ -130,6 +130,7 @@
     "react-icons": "^2.2.3",
     "react-intl": "^2.2.3",
     "react-material-responsive-grid": "^1.1.0",
+    "react-medium-image-zoom": "^1.0.0",
     "react-style-proptype": "^3.0.0",
     "react-tap-event-plugin": "^2.0.1",
     "react-toolbox": "2.0.0-beta.6",
