@@ -65,15 +65,15 @@ export default {
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader?sourceMap!sass-loader?sourceMap',
+          fallback: 'style-loader',
+          use: 'css-loader?sourceMap!sass-loader?sourceMap',
         }),
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader?sourceMap!sass-loader?sourceMap',
+          fallback: 'style-loader',
+          use: 'css-loader?sourceMap!sass-loader?sourceMap',
         }),
       },
     ],
@@ -86,6 +86,7 @@ export default {
     new Copy([
       { from: '**/*.html' },
       { from: '**/*.ico' },
+      { from: '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css' },
     ]),
     new ExtractTextPlugin('style.css'),
     new Webpack.NamedModulesPlugin(),
