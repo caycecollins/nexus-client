@@ -69,6 +69,13 @@ export default {
           loader: 'css-loader?sourceMap!sass-loader?sourceMap',
         }),
       },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?sourceMap!sass-loader?sourceMap',
+        }),
+      },
     ],
   },
   plugins: [
