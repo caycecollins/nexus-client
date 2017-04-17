@@ -88,7 +88,7 @@ function Home (props) {
             <br />
             <br />
             <RTCard>
-              <StyledRTCardTitle title="Introducing Weekly 2v2 Tournaments!" />
+              <StyledRTCardTitle title="RLCS" />
               <RTCardText>
                 <br />
                 <strong>No tournament this weekend</strong>
@@ -169,7 +169,10 @@ Home.propTypes = {
 export default Home
 
 const Container = styled.div`
+  width: 100%;
+  height: 100%;
   padding: 24px;
+  background-color: #f6f6f6
 `
 
 const StyledRTCardTitle = styled(RTCardTitle)`
