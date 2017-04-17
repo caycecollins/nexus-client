@@ -8,12 +8,17 @@ import RTNavDrawer from 'react-toolbox/lib/layout/NavDrawer'
 import RTNavigation from 'react-toolbox/lib/navigation/Navigation'
 import RTList from 'react-toolbox/lib/list/List'
 import RTListItem from 'react-toolbox/lib/list/ListItem'
+import RTListSubheader from 'react-toolbox/lib/list/ListSubheader'
 
 const menuItems = [
   { label: 'Home', route: 'home', icon: 'home' },
   { label: 'Tournaments', route: 'tournaments', icon: 'stars' },
   { label: 'Teams', route: 'teams', icon: 'group' },
   { label: 'FAQ', route: 'faq', icon: 'help' },
+]
+
+const adminItems = [
+  { label: 'Admin', route: 'admin', icon: 'build' },
 ]
 
 const NavDrawer = props => {
@@ -44,16 +49,35 @@ const NavDrawer = props => {
         <StyledNavigation type="vertical">
           <RTList>
             {menuItems.map((item, index) => {
+              const showDivider = item.label === 'Admin' && <RTListDivider />
               return (
-                <StyledListItem
-                  caption={item.label}
-                  key={item.route}
-                  leftIcon={item.icon}
-                  onClick={() => navigationItemClicked(item)}
-                  disabled={item.route === props.currentView}
-                  ripple={false} // TODO: fix styles so ripple will work
-                  selectable
-                />
+                <div key={item.route}>
+                  {showDivider}
+                  <StyledListItem
+                    caption={item.label}
+                    leftIcon={item.icon}
+                    onClick={() => navigationItemClicked(item)}
+                    disabled={item.route === props.currentView}
+                    ripple={false} // TODO: fix styles so ripple will work
+                    selectable
+                  />
+                </div>
+              )
+            })}
+            <br />
+            <RTListSubheader caption="Administration"/>
+            {adminItems.map((item, index) => {
+              return (
+                <div key={item.route}>
+                  <StyledListItem
+                    caption={item.label}
+                    leftIcon={item.icon}
+                    onClick={() => navigationItemClicked(item)}
+                    disabled={item.route === props.currentView}
+                    ripple={false} // TODO: fix styles so ripple will work
+                    selectable
+                  />
+                </div>
               )
             })}
           </RTList>

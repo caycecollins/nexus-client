@@ -11,6 +11,7 @@ import Teams from '../Teams'
 import FAQ from '../FAQ'
 import Notifications from '../Notifications'
 import Settings from '../Settings'
+import Admin from '../Admin'
 
 import './transitions.scss'
 
@@ -22,6 +23,7 @@ const views = {
   faq: FAQ,
   notifications: Notifications,
   settings: Settings,
+  admin: Admin,
 }
 
 export default connect({
