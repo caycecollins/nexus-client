@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { Editor } from 'react-draft-wysiwyg'
 import { EditorState, convertToRaw } from 'draft-js'
-import Input from 'react-toolbox/lib/input/Input'
-import RTCard from 'react-toolbox/lib/card/Card'
-import RTCardTitle from 'react-toolbox/lib/card/CardTitle'
-import RTCardText from 'react-toolbox/lib/card/CardText'
-import RTCardActions from 'react-toolbox/lib/card/CardActions'
+import {
+  RTInput,
+  RTCard,
+  RTCardTitle,
+  RTCardText,
+  RTCardActions,
+} from 'wrappers/react-toolbox'
 
 class Admin extends React.Component {
   state = {
@@ -33,7 +35,7 @@ class Admin extends React.Component {
             />
           </RTCardText>
         </RTCard>
-        <Input
+        <RTInput
           disabled
           multiline={true}
           value={editorState && JSON.stringify(convertToRaw(editorState.getCurrentContent()), null, 2)}

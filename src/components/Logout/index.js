@@ -7,18 +7,18 @@ import {
   intlShape,
   FormattedMessage,
 } from 'react-intl'
-import Button from 'react-toolbox/lib/button/Button'
+import { RTButton } from 'wrappers/react-toolbox'
 
 function Logout (props) {
   return (
-    <Button
+    <RTButton
       icon="exit_to_app"
       raised={true}
       primary
       onClick={() => props.viewChanged({ view: 'login' })}
     >
       <FormattedMessage id={'i18n.Logout.submitButton'} />
-    </Button>
+    </RTButton>
   )
 }
 

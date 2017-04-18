@@ -2,13 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { Grid, Row, Col } from 'react-material-responsive-grid'
 import ImageZoom from 'react-medium-image-zoom'
-import RTCard from 'react-toolbox/lib/card/Card'
-import RTCardTitle from 'react-toolbox/lib/card/CardTitle'
-import RTCardText from 'react-toolbox/lib/card/CardText'
-import RTCardActions from 'react-toolbox/lib/card/CardActions'
-import RTButton from 'react-toolbox/lib/button/Button'
-import RTList from 'react-toolbox/lib/list/List'
-import RTListItem from 'react-toolbox/lib/list/ListItem'
+import {
+  RTCard,
+  RTCardTitle,
+  RTCardText,
+  RTCardActions,
+  RTButton,
+  RTList,
+  RTListItem,
+} from 'wrappers/react-toolbox'
 
 function Home (props) {
   return (

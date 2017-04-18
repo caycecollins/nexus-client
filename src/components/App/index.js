@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { state } from 'cerebral/tags'
 import styled, { ThemeProvider as CerebralThemeProvider } from 'styled-components'
-import RTThemeProvider from 'react-toolbox/lib/ThemeProvider'
-import RTLayout from 'react-toolbox/lib/layout/Layout'
-import RTPanel from 'react-toolbox/lib/layout/Panel'
+import {
+  RTThemeProvider,
+  RTLayout,
+  RTPanel,
+} from 'wrappers/react-toolbox'
+
 
 import RenderView from '../RenderView'
 import toolboxTheme from '../../../dist/react-toolbox/theme'

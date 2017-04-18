@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { state, signal } from 'cerebral/tags'
 import styled from 'styled-components'
-import IconButton from 'react-toolbox/lib/button/IconButton'
-import RTNavDrawer from 'react-toolbox/lib/layout/NavDrawer'
-import RTNavigation from 'react-toolbox/lib/navigation/Navigation'
-import RTList from 'react-toolbox/lib/list/List'
-import RTListItem from 'react-toolbox/lib/list/ListItem'
-import RTListSubheader from 'react-toolbox/lib/list/ListSubheader'
+import {
+  RTIconButton,
+  RTNavDrawer,
+  RTNavigation,
+  RTList,
+  RTListItem,
+  RTListSubheader,
+} from 'wrappers/react-toolbox'
 
 const menuItems = [
   { label: 'Home', route: 'home', icon: 'home' },
@@ -116,7 +118,7 @@ const StyledNavDrawer = styled(RTNavDrawer)`
   border-right: 0 !important;
 `
 
-const StyledIconButton = styled(IconButton)`
+const StyledIconButton = styled(RTIconButton)`
   color: white !important;
 `
 

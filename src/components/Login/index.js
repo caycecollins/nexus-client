@@ -10,12 +10,14 @@ import {
   intlShape,
 } from 'react-intl'
 import styled from 'styled-components'
-import RTInput from 'react-toolbox/lib/input/Input'
-import RTButton from 'react-toolbox/lib/button/Button'
-import RTCard from 'react-toolbox/lib/card/Card'
-import RTCardTitle from 'react-toolbox/lib/card/CardTitle'
-import RTCardText from 'react-toolbox/lib/card/CardText'
-import RTCardActions from 'react-toolbox/lib/card/CardActions'
+import {
+  RTInput,
+  RTButton,
+  RTCard,
+  RTCardTitle,
+  RTCardText,
+  RTCardActions,
+} from 'wrappers/react-toolbox'
 
 function Login (props) {
   return (

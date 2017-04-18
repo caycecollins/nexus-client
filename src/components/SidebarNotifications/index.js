@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { signal } from 'cerebral/tags'
 import styled from 'styled-components'
-import RTList from 'react-toolbox/lib/list/List'
-import RTListItem from 'react-toolbox/lib/list/ListItem'
+import {
+  RTList,
+  RTListItem,
+} from 'wrappers/react-toolbox'
 
 function Notifications (props) {
   return (

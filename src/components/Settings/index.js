@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { state, signal } from 'cerebral/tags'
 import styled from 'styled-components'
-import RTCheckbox from 'react-toolbox/lib/checkbox/Checkbox'
-import RTCard from 'react-toolbox/lib/card/Card'
-import RTCardTitle from 'react-toolbox/lib/card/CardTitle'
-import RTCardText from 'react-toolbox/lib/card/CardText'
+import {
+  RTCheckbox,
+  RTCard,
+  RTCardTitle,
+  RTCardText,
+} from 'wrappers/react-toolbox'
 
 import Logout from '../Logout'
 
