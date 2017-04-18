@@ -32,6 +32,8 @@ export default {
     alias: {
       config: Path.join(__dirname, 'config', process.env.NODE_ENV || 'development'),
       common: Path.join(__dirname, 'src', 'common'),
+      components: Path.join(__dirname, 'src', 'components'),
+      wrappers: Path.join(__dirname, 'src', 'wrappers'),
     },
     modules: ['node_modules'],
   },
