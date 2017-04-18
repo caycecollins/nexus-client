@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import { connect } from 'cerebral/react'
 import { state, signal } from 'cerebral/tags'
 import styled from 'styled-components'
-import RTAppBar from 'react-toolbox/lib/app_bar/AppBar'
-import RTIconButton from 'react-toolbox/lib/button/IconButton'
-import RTIconMenu from 'react-toolbox/lib/menu/IconMenu'
-import RTMenuItem from 'react-toolbox/lib/menu/MenuItem'
-import RTMenuDivider from 'react-toolbox/lib/menu/MenuDivider'
+import {
+  RTAppBar,
+  RTIconButton,
+  RTIconMenu,
+  RTMenuItem,
+  RTMenuDivider,
+} from 'wrappers/react-toolbox'
 
 const AppBar = (props) => {
   const languages = ['none', ...props.availableLanguages].sort()
-  const navigationItemClicked = () => {
+  const menuIconClicked = () => {
     const windowWidth = window.innerWidth
     windowWidth <= 840
       ? props.drawerActiveToggled({ value: !props.drawerActive })
@@ -21,7 +23,7 @@ const AppBar = (props) => {
     <StyledAppBar
       title="Nexus Gaming"
       leftIcon={!props.drawerPinned ? 'menu' : null}
-      onLeftIconClick={() => navigationItemClicked()}
+      onLeftIconClick={() => menuIconClicked()}
       flat
     >
       <StyledRightIcons>
@@ -57,7 +59,6 @@ AppBar.propTypes = {
   drawerActiveToggled: PropTypes.func,
   drawerPinned: PropTypes.bool,
   drawerPinnedToggled: PropTypes.func,
-  sidebarActiveToggled: PropTypes.func,
   sidebarViewChanged: PropTypes.func,
   language: PropTypes.string.isRequired,
   availableLanguages: PropTypes.array.isRequired,
@@ -70,8 +71,6 @@ export default connect(
     drawerActiveToggled: signal`app.drawerActiveToggled`,
     drawerPinned: state`app.drawerPinned`,
     drawerPinnedToggled: signal`app.drawerPinnedToggled`,
-    sidebarActive: state`app.sidebarActive`,
-    sidebarActiveToggled: signal`app.sidebarActiveToggled`,
     sidebarViewChanged: signal`app.sidebarViewChanged`,
     viewChanged: signal`app.viewChanged`,
     language: state`localization.language`,
