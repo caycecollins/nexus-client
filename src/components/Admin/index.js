@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { Editor } from 'react-draft-wysiwyg'
 import { EditorState, convertToRaw } from 'draft-js'
 import {
-  RTInput,
+  RTButton,
   RTCard,
   RTCardTitle,
   RTCardText,
   RTCardActions,
+  RTInput,
 } from 'wrappers/react-toolbox'
 
 class Admin extends React.Component {
@@ -27,13 +28,21 @@ class Admin extends React.Component {
       <Container>
         <RTCard>
           <StyledRTCardTitle title="Add news entry" />
-          <RTCardText>
+          <StyledRTCardText>
             <Editor
               editorState={editorState}
               onEditorStateChange={this.onEditorStateChange}
               // toolbar={{ image: { uploadCallback: uploadImageCallBack } }}
+              editorStyle={editorStyle}
+              toolbarStyle={toolbarStyle}
             />
-          </RTCardText>
+          </StyledRTCardText>
+          <StyledRTCardActions>
+            <RTButton
+              label="Save"
+              onClick={() => console.log('TODO: Save News Entry')}
+            />
+          </StyledRTCardActions>
         </RTCard>
         <RTInput
           disabled
@@ -62,3 +71,27 @@ const StyledRTCardTitle = styled(RTCardTitle)`
     font-size: 1rem !important;
   }
 `
+
+const StyledRTCardText = styled(RTCardText)`
+  padding: 0 !important;
+  backgroundColor: #fff;
+`
+
+const StyledRTCardActions = styled(RTCardActions)`
+  backgroundColor: #f4f4f4;
+`
+
+const toolbarStyle = {
+  backgroundColor: '#f4f4f4',
+  margin: '0px',
+}
+
+const editorStyle = {
+  border: '1px solid #eee',
+  backgroundColor: '#fff',
+  minHeight: '300px',
+  padding: '8px',
+  margin: '0px',
+  width: 'auto',
+}
+
