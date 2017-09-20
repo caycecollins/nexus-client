@@ -3,6 +3,7 @@ import { connect } from 'cerebral/react'
 import { state } from 'cerebral/tags'
 import styled from 'styled-components'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import config from 'config'
 
 import Login from '../Login'
 import Home from '../Home'
@@ -32,7 +33,7 @@ export default connect({
   drawerPinned: state`app.drawerPinned`,
 },
 function RenderView ({ currentView, lastVisited, drawerPinned }) {
-  views[currentView]
+  if (!config.production) views[currentView]
     ? console.log(`Routing to view: ${currentView}`)
     : console.log(`The route "${currentView}" does not exist, routing to login instead.`)
   const Component = views[currentView] || views['home']

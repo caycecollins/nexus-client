@@ -2,7 +2,6 @@
 require('ramda')
 require('react')
 require('react-dom')
-require('react-hot-loader')
 require('strip-ansi')
 require('url')
 require('prop-types')

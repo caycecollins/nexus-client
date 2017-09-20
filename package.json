@@ -29,27 +29,20 @@
       "TIME_PICKER",
       "TOOLTIP"
     ],
-    "customProperties": {
-      "animation-duration": "0.3s",
-      "color-accent": "var(--palette-pink-a200)",
-      "color-accent-dark": "var(--palette-pink-700)",
-      "color-primary-contrast": "var(--color-dark-contrast)",
-      "color-accent-contrast": "var(--color-dark-contrast)"
-    },
     "output": "dist/react-toolbox"
   },
   "name": "nexus-client",
   "version": "0.0.1",
   "description": "Front-end for Nexus Gaming",
   "scripts": {
-    "build": "npm run clean && npm run build:dll && npm run build:i18n && npm run build:webpack",
-    "build:dll": "webpack --config webpack.dll.babel.js --progress",
+    "build": "npm run clean && npm run build:prod:dll && npm run build:i18n && npm run toolbox && npm run build:webpack",
+    "build:dev:dll": "webpack --config webpack.dev.dll.babel.js --progress",
+    "build:prod:dll": "webpack --config webpack.prod.dll.babel.js --progress",
     "build:i18n": "babel-node task/localize.js --presets es2015,stage-0",
     "build:webpack": "webpack --config webpack.prod.babel.js --progress",
     "clean": "rimraf dist",
     "start": "webpack-dev-server --config webpack.dev.babel.js --hot --inline --progress",
-    "start:full": "npm run clean && npm run build:dll && npm run build:i18n && npm run toolbox && webpack-dev-server --config webpack.dev.babel.js --hot --inline --progress",
-    "start:optimized": "npm run clean && npm run build:dll && npm run build:i18n && npm run toolbox && webpack-dev-server --config webpack.dev.babel.js --hot --inline --optimize-minimize --progress",
+    "start:full": "npm run clean && npm run build:dev:dll && npm run build:i18n && npm run toolbox && webpack-dev-server --config webpack.dev.babel.js --hot --inline --progress",
     "test": "jest",
     "toolbox": "react-toolbox-themr"
   },

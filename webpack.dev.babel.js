@@ -81,6 +81,11 @@ export default {
     ],
   },
   plugins: [
+    new Webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    }),
     new Webpack.DllReferencePlugin({
       context: Path.resolve(__dirname, 'src'),
       manifest: manifest,

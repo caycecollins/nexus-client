@@ -30,6 +30,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new Webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    }),
     new Webpack.DllPlugin({
       path: Path.join(__dirname, 'dll', '[name]-manifest.json'),
       name: '[name]',

@@ -8,9 +8,12 @@ import manifest from './dll/vendor-manifest.json'
 
 export default {
   context: Path.resolve(__dirname, 'src'),
+  devtool: 'cheap-module-source-map',
   entry: {
-    index: './index.js',
-    perimeter: './perimeter.js',
+    index: [
+      'babel-polyfill',
+      './index.js',
+    ],
   },
   output: {
     path: Path.resolve(__dirname, 'dist'),
@@ -20,6 +23,9 @@ export default {
   resolve: {
     alias: {
       config: Path.join(__dirname, 'config', process.env.NODE_ENV || 'production'),
+      common: Path.join(__dirname, 'src', 'common'),
+      components: Path.join(__dirname, 'src', 'components'),
+      wrappers: Path.join(__dirname, 'src', 'wrappers'),
     },
     modules: ['node_modules'],
   },
@@ -29,32 +35,63 @@ export default {
         test: /\.js$/,
         loader: 'babel-loader',
         query: {
-          cacheDirectory: true, // important for performance
+          cacheDirectory: false,
           plugins: [
             'transform-regenerator',
-            [require.resolve('babel-plugin-react-intl'), { messageDir: './dist/messages', enforceDescriptions: false }],
+            ['react-intl', {
+              'messagesDir': './dist/messages/',
+            }],
           ],
-          presets: ['react', 'es2015', 'stage-0'],
+          presets: [
+            'react',
+            ['es2015', { modules: false }],
+            'stage-0',
+          ],
         },
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: 'css-loader?sourceMap!sass-loader?sourceMap',
+          fallback: 'style-loader',
+          use: 'css-loader?sourceMap!sass-loader?sourceMap',
+        }),
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?sourceMap!sass-loader?sourceMap',
         }),
       },
     ],
   },
   plugins: [
+    new Webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new Webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
     new Webpack.DllReferencePlugin({
       context: Path.resolve(__dirname, 'src'),
       manifest: manifest,
     }),
     new Copy([
+      { from: 'src/web.config' }, // for iis and using url rewrite config to support cerebral-routing
       { from: '**/*.html' },
+      { from: '**/*.ico' },
+      { from: '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css' },
+      { from: '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css.map' },
     ]),
     new ExtractTextPlugin('style.css'),
+    new Webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
     // new Webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor',
     //   minChunks (module) {
