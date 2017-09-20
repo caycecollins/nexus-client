@@ -9,36 +9,16 @@ Other goals consist of communicating with the community about news, rules, legal
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ```
-git clone https://git.gamingnex.us/inergy/nexus-client.git
+git clone git@github.com:inergy/nexus-client.git
 yarn
 yarn start:full
 ```
 
-After the vendor and localization have been built, you can simply run:
+After the vendor file has have been built (yarn start:full above), you can avoid lengthly rebuild times by using:
 
 ```
 yarn start
 ```
 
-To avoid the initial lengthly build time.
-
 ### Prerequisites
 * [NodeJS](https://nodejs.org) (started @ v7.8.0)
-
-## Deployment (TODO)
-
-## Contributing (TODO)
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://git.gamingnex.us/inergy/nexus-client/tags).
-
-## Authors
-
-* Cayce Collins - [aka inergy](https://github.com/inergy)
-
-See also the list of [contributors](https://git.gamingnex.us/inergy/nexus-client/activity) who participated in this project.
-
-## License (TODO)
-
-This project is licensed under the ??? License - see the [LICENSE.md](LICENSE.md) file for details
